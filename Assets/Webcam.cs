@@ -23,8 +23,11 @@ public class Webcam : MonoBehaviour {
         needsBuffer = !(inputWidth==4096&&inputHeight==2048);
 
         //Place image in the center of the output texture
-        xOffset = (4096-inputWidth)/2;
-        yOffset = (2048-inputHeight)/2;
+        if (needsBuffer) {
+            xOffset = (4096-inputWidth)/2;
+            yOffset = (2048-inputHeight)/2;
+        }
+        
         webcamTexture.deviceName = devices[deviceId].name;
         
         webcamTexture.Play();
